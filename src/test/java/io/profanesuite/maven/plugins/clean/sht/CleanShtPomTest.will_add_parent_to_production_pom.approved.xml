@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+MIT License
+
+Copyright (c) 2022 ProfaneSuite
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+--><!-- ====================================================================== --><!--                                                                        --><!-- Generated on 2022-10-07T01:55:58                                       --><!--                                                                        --><!-- ====================================================================== --><!-- ====================================================================== --><!--                                                                        --><!-- Effective POM for project                                              --><!-- 'io.profanesuite.maven.plugins:clean-sht-pom-maven-plugin:maven-plugin:0.0.1-SNAPSHOT' --><!--                                                                        --><!-- ====================================================================== --><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>io.profanesuite.maven.plugins</groupId>
+        <artifactId>profanesuite-maven-plugin</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../profanesuite-maven-plugin</relativePath>
+    </parent>
+    <groupId>io.profanesuite.maven.plugins</groupId>
+    <artifactId>clean-sht-pom-maven-plugin</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>maven-plugin</packaging>
+    <name>Profanesuite clean sht pom Plugin</name>
+    <description>Generates a clean pom for uploading with your release artifact.</description>
+    <url>https://www.profanesuite.io/plugins/clean-sht-pom-maven-plugin/</url>
+    <inceptionYear>2022</inceptionYear>
+    <organization>
+        <name>The Profane Suite</name>
+        <url>https://www.profanesuite.io/</url>
+    </organization>
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>http://www.opensource.org/licenses/mit-license.php</url>
+        </license>
+    </licenses>
+    <developers>
+        <developer>
+            <id>abartish</id>
+            <name>Arran Bartish</name>
+            <email>admin@profanesuite.io</email>
+            <roles>
+                <role>Founder</role>
+            </roles>
+            <timezone>-4</timezone>
+            <properties>
+                <twitter>@arranbartish</twitter>
+            </properties>
+        </developer>
+    </developers>
+    <prerequisites>
+        <maven>3.2.5</maven>
+    </prerequisites>
+    <scm>
+        <connection>scm:git:https://github.com/ProfaneSuite/clean-sht-pom-maven-plugin.git/profanesuite-maven-plugin/clean-sht-pom-maven-plugin</connection>
+        <developerConnection>scm:git:git@github.com:ProfaneSuite/clean-sht-pom-maven-plugin.git/profanesuite-maven-plugin/clean-sht-pom-maven-plugin</developerConnection>
+        <tag/>
+        <url>https://github.com/ProfaneSuite/clean-sht-pom-maven-plugin/profanesuite-maven-plugin/clean-sht-pom-maven-plugin</url>
+    </scm>
+    <properties>
+        <assembly.tarLongFileMode>posix</assembly.tarLongFileMode>
+        <checkstyle.violation.ignore>RedundantThrows,NewlineAtEndOfFile,ParameterNumber,MethodLength,FileLength</checkstyle.violation.ignore>
+        <distMgmtSnapshotsName>Profane Suite Development Snapshot Repository</distMgmtSnapshotsName>
+        <distMgmtSnapshotsUrl>file:///home/abartish/src/repo/snapshots</distMgmtSnapshotsUrl>
+        <gpg.useagent>true</gpg.useagent>
+        <javaVersion>8</javaVersion>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.plugin.tools.version>3.6.4</maven.plugin.tools.version>
+        <mavenVersion>3.2.5</mavenVersion>
+        <minimalJavaBuildVersion>1.8</minimalJavaBuildVersion>
+        <minimalMavenBuildVersion>3.2.5</minimalMavenBuildVersion>
+        <organization.logo>https://profanesuite.github.io/profane-logo.png</organization.logo>
+        <project.build.outputTimestamp>2022-07-16T16:14:30Z</project.build.outputTimestamp>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <resolverVersion>1.0.0.v20140518</resolverVersion>
+        <sisuVersion>0.3.5</sisuVersion>
+        <slf4jVersion>1.7.5</slf4jVersion>
+        <sourceReleaseAssemblyDescriptor>source-release</sourceReleaseAssemblyDescriptor>
+        <surefire.version>3.0.0-M7</surefire.version>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-help-plugin</artifactId>
+            <version>3.3.0</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-plugin-api</artifactId>
+            <version>3.2.5</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-core</artifactId>
+            <version>3.2.5</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-model</artifactId>
+            <version>3.2.5</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-artifact</artifactId>
+            <version>3.2.5</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.5</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven.plugin-tools</groupId>
+            <artifactId>maven-plugin-annotations</artifactId>
+            <version>3.6.4</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven.plugin-testing</groupId>
+            <artifactId>maven-plugin-testing-harness</artifactId>
+            <version>3.3.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-compat</artifactId>
+            <version>3.2.5</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>2.28.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.9.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-nop</artifactId>
+            <version>1.7.5</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+</project>

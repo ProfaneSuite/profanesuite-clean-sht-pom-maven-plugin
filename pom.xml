@@ -1,0 +1,214 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!--
+MIT License
+
+Copyright (c) 2022 ProfaneSuite
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+-->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>io.profanesuite.maven.plugins</groupId>
+        <artifactId>profanesuite-maven-plugin</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../profanesuite-maven-plugin</relativePath>
+    </parent>
+
+    <artifactId>clean-sht-pom-maven-plugin</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>maven-plugin</packaging>
+
+    <name>Profanesuite clean sht pom Plugin</name>
+    <description>Generates a clean pom for uploading with your release artifact.</description>
+    <inceptionYear>2022</inceptionYear>
+
+    <prerequisites>
+        <maven>${mavenVersion}</maven>
+    </prerequisites>
+
+    <repositories>
+        <repository>
+            <id>local-temp-repo</id>
+            <name>local-temp-repo</name>
+            <url>file://${project.basedir}/local-repo</url>
+        </repository>
+    </repositories>
+
+    <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <javaVersion>11</javaVersion>
+        <mavenVersion>3.2.5</mavenVersion>
+        <slf4jVersion>1.7.5</slf4jVersion> <!-- Keep in sync with resolver used in maven above -->
+        <resolverVersion>1.0.0.v20140518</resolverVersion> <!-- Keep in sync with resolver used in maven above -->
+        <project.build.outputTimestamp>2022-07-16T16:14:30Z</project.build.outputTimestamp>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-help-plugin</artifactId>
+            <version>3.3.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-plugin-api</artifactId>
+            <version>${mavenVersion}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-core</artifactId>
+            <version>${mavenVersion}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-model</artifactId>
+            <version>${mavenVersion}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-artifact</artifactId>
+            <version>${mavenVersion}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4jVersion}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- dependencies to annotations -->
+        <dependency>
+            <groupId>org.apache.maven.plugin-tools</groupId>
+            <artifactId>maven-plugin-annotations</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Test -->
+        <dependency>
+            <groupId>org.apache.maven.plugin-testing</groupId>
+            <artifactId>maven-plugin-testing-harness</artifactId>
+            <version>3.3.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.approvaltests</groupId>
+            <artifactId>approvaltests</artifactId>
+            <version>18.4.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>3.23.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.google.jimfs</groupId>
+            <artifactId>jimfs</artifactId>
+            <version>1.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency> <!-- used by maven-plugin-testing-harness, don't give it compile scope! -->
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-compat</artifactId>
+            <version>${mavenVersion}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>2.28.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.9.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-nop</artifactId>
+            <version>${slf4jVersion}</version>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.rat</groupId>
+                <artifactId>apache-rat-plugin</artifactId>
+                <configuration>
+                    <excludes combine.children="append">
+                        <exclude>.asf.yaml</exclude><!-- Can be removed with upgrade to maven-plugins:34 -->
+                    </excludes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <profiles>
+<!--        <profile>-->
+<!--            <id>run-its</id>-->
+<!--            <build>-->
+<!--                <pluginManagement>-->
+<!--                    <plugins>-->
+<!--                        <plugin>-->
+<!--                            <groupId>org.apache.maven.plugins</groupId>-->
+<!--                            <artifactId>maven-invoker-plugin</artifactId>-->
+<!--                            <configuration>-->
+<!--                                <debug>true</debug>-->
+<!--                                <showErrors>true</showErrors>-->
+<!--                                <cloneProjectsTo>${project.build.directory}/it</cloneProjectsTo>-->
+<!--                                <cloneClean>true</cloneClean>-->
+<!--                                <pomIncludes>-->
+<!--                                    <pomInclude>*/pom.xml</pomInclude>-->
+<!--                                    <pomInclude>*/non-default-pom.xml</pomInclude>-->
+<!--                                </pomIncludes>-->
+<!--                                <preBuildHookScript>setup</preBuildHookScript>-->
+<!--                                <postBuildHookScript>verify</postBuildHookScript>-->
+<!--                                <localRepositoryPath>${project.build.directory}/local-repo</localRepositoryPath>-->
+<!--                                <settingsFile>src/it/settings.xml</settingsFile>-->
+<!--                                <addTestClassPath>true</addTestClassPath>-->
+<!--                                <goals>-->
+<!--                                    <goal>deploy</goal>-->
+<!--                                </goals>-->
+<!--                                <properties>-->
+<!--                                    &lt;!&ndash; e.g. ensure that Java7 picks up TLSv1.2 when connecting with Central &ndash;&gt;-->
+<!--                                    <https.protocols>${https.protocols}</https.protocols>-->
+<!--                                </properties>-->
+<!--                            </configuration>-->
+<!--                        </plugin>-->
+<!--                    </plugins>-->
+<!--                </pluginManagement>-->
+<!--            </build>-->
+<!--        </profile>-->
+    </profiles>
+</project>
